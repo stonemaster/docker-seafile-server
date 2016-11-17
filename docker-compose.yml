@@ -1,0 +1,15 @@
+seafile:
+    image: stonemaser/docker-seafile-server
+    container_name: seafile
+    ports:
+        - "443:443"
+    environment:
+        - SEAFILE_EXTERNAL_PORT=443
+        - SEAFILE_HOSTNAME=localhost
+        - SEAFILE_SERVER_NAME=myseafile
+        - SEAFILE_ADMIN_MAIL=admin@seafile.com
+        - SEAFILE_ADMIN_PASSWORD=test123
+        - USE_SSL=on
+    volumes:
+        - /tmp/seafile:/data
+        - ./test/ssl:/etc/ssl
