@@ -1,5 +1,7 @@
 # Docker Image for fully functional Seafile with SQLite
 
+[![Build Status](https://travis-ci.org/stonemaster/docker-seafile-server.svg?branch=master)](https://travis-ci.org/stonemaster/docker-seafile-server)
+
 **Current Seafile server version: 6.0.4**
 
 This docker image provides a fully-functional *Seafile*
