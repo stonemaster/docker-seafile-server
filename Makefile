@@ -1,6 +1,6 @@
 NAME = seafile
 
-aLL: build run tests clean
+all: build run tests clean
 
 build:
 	docker build -t $(NAME) .
