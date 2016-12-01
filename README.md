@@ -1,6 +1,6 @@
 # Docker Image for fully functional Seafile with SQLite
 
-**Current Seafile server version: 6.0.4*
+**Current Seafile server version: 6.0.4**
 
 This docker image provides a fully-functional *Seafile*
 server installation that is configured with *SQLite* and
