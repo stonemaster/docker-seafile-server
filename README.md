@@ -13,7 +13,7 @@ seafile data is stored in a persistent manner
  * Initial setup is done during first startup where
 setup of the administator account is created. The administrator
 allows to create other users.
- * *No user interaction needed for container startup!*
+ * **No user interaction needed for container startup!**
  * Upgrades to new seafile versions are handled internally
 by automatically running seafile provided upgrade scripts
  * Unittests are done using [bats](https://github.com/sstephenson/bats)
@@ -146,7 +146,7 @@ The administator's password used during initial setup.
 
 ### USE_SSL
 
- * *default:* ?`off`
+ * *default:* `off`
  * Options: `on`, `off`
 
 Enables HTTP (`off`) or HTTPs (`on`).
