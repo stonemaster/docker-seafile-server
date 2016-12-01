@@ -7,7 +7,7 @@
 This docker image provides a fully-functional *Seafile*
 server installation that is configured with *SQLite* and
 has no other dependencies. Internally *nginx* is configured
-as reverse proxy with can either be accessed via *HTTP*
+as a reverse proxy with can either be accessed via *HTTP*
 or *HTTPs*.
 
  * The container exposes a */data* volume where all
@@ -63,7 +63,7 @@ Run `docker-compose up -d`.
 ## Directory structure for Seafile
 
 The following files are located inside the folder
-that is mounted to``/data`:
+that is mounted to `/data`:
 
 ```
 seafile_version
@@ -88,7 +88,7 @@ installation into your containers to-be-mounted `data` folder.
 Don't do that when the container is started!
  2. Create a `seafile_version` file in the `/data` mount containing the current
 `MAJOR.MINOR` of your installation e.g. `5.0`. Don't add a
-newline after version.
+newline after the version.
 
 ## SSL
 
@@ -99,7 +99,6 @@ this command:
 
 ```bash
 openssl req -x509 -newkey rsa:4096 -keyout privkey.pem -out cert.pem -nodes -days 365
-
 ```
 
 An unprotected private key will be generated using the command
