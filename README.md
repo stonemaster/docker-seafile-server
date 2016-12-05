@@ -108,12 +108,17 @@ to the folder `/etc/ssl` using the default SSL locations.
 
 ### Using Let's Encrypt
 
-Mount your domain's folder into `/etc/ssl`. Certificate
-and private key filenames already match those of
-Let's Encrypt.
+Mount your letsencrypt folder to `/etc/letsencrypt`. Adapt certificate
+and private key filenames using the `SSL_CERT_FILE` and `SSL_PRIVKEY_FILE`
+environment variables.
 
-For example add `-v /etc/letsencrypt/live/mydomain.com:/etc/ssl/`
-to your `docker run` command.
+For example add the following parameters to your `docker run` command:
+
+```
+   ... -v /etc/letsencrypt:/etc/letsencrypt \
+       -e SSL_CERT_FILE=/etc/letsencrypt/live/seafile.com/cert.pem \
+       -e SSL_PRIVKEY_FILE=/etc/letsencrypt/live/seafile.com/privkey.pem
+```
 
 ## Environment variables
 
