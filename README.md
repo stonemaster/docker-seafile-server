@@ -41,7 +41,7 @@ Create a `docker-compose.yml` file:
 
 ```
 seafile:
-    image: stonemaser/docker-seafile-server
+    image: stonemaster/docker-seafile-server
     container_name: seafile
     ports:
         - "443:443"
