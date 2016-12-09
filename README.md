@@ -110,13 +110,15 @@ to the folder `/etc/ssl` using the default SSL locations.
 
 Mount your letsencrypt folder to `/etc/letsencrypt`. Adapt certificate
 and private key filenames using the `SSL_CERT_FILE` and `SSL_PRIVKEY_FILE`
-environment variables.
+environment variables. It's important that the cert file path points
+to `fullchain.pem` in order to allow the Seafile client to correctly
+verify the certificate.
 
 For example add the following parameters to your `docker run` command:
 
 ```
    ... -v /etc/letsencrypt:/etc/letsencrypt \
-       -e SSL_CERT_FILE=/etc/letsencrypt/live/seafile.com/cert.pem \
+       -e SSL_CERT_FILE=/etc/letsencrypt/live/seafile.com/fullchain.pem \
        -e SSL_PRIVKEY_FILE=/etc/letsencrypt/live/seafile.com/privkey.pem
 ```
 
