@@ -11,9 +11,9 @@ VOLUME /data
 # make sure that SEAFILE_MAJOR matches SEAFILE_VERSION!
 # additional the seafile versions may be passed as --build-arg variables
 # thus overriding this default!
-ARG SEAFILE_VERSION=6.0.5
+ARG SEAFILE_VERSION=6.2.3
 ENV SEAFILE_VERSION ${SEAFILE_VERSION}
-ARG SEAFILE_MAJOR=6.0
+ARG SEAFILE_MAJOR=6.2
 ENV SEAFILE_MAJOR ${SEAFILE_MAJOR}
 
 # Install seafile dependencies and make sure to clean
@@ -26,7 +26,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -q --fix-missing && \
 
 # download and extract seafile release
 RUN mkdir seafile && cd /seafile && \
-	wget -O - https://bintray.com/artifact/download/seafile-org/seafile/seafile-server_${SEAFILE_VERSION}_x86-64.tar.gz | tar xzvf -
+	wget -O - https://download.seadrive.org/seafile-server_${SEAFILE_VERSION}_x86-64.tar.gz | tar xzvf -
 
 # run initial seafile setup script with initial placeholder
 # values which will be patched in the container start script

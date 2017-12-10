@@ -3,6 +3,7 @@
 set -u
 set -e
 set -o pipefail
+set -x
 
 # copy initial seahub data folder if not existant
 # and copy initial seafile data sqlite database if not existant
@@ -16,12 +17,19 @@ if [[ ! -f /data/seahub.db ]] && [[ ! -f /data/seahub-data ]]; then
     echo -n ${SEAFILE_MAJOR} > /data/seafile_version
 fi
 
+# copy ccnet folder for user management.
+if [[ ! -d /data/ccnet ]]; then
+    cp -rv /seafile/ccnet /data/
+fi
+
 # remove initial seafile data files and replace
 # them my symlinks to /data folder
-rm -rf /seafile/seahub-data /seafile/seafile-data /seafile/seahub.db
+rm -rfv /seafile/seahub-data /seafile/seafile-data /seafile/seahub.db \
+   /seafile/ccnet
 ln -s /data/seahub-data /seafile
 ln -s /data/seahub.db /seafile
 ln -s /data/seafile-data /seafile
+ln -s /data/ccnet /seafile/ccnet
 
 echo "Adapting configuration of seafile service:"
 echo " - hostname: ${SEAFILE_HOSTNAME}"

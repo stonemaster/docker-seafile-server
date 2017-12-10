@@ -4,8 +4,8 @@ all: build run tests clean
 
 build:
 	docker build -t $(NAME) .
-	docker build --build-arg SEAFILE_VERSION=5.1.4 \
-		--build-arg SEAFILE_MAJOR=5.1 -t $(NAME):old .
+	docker build --build-arg SEAFILE_VERSION=6.1.2 \
+		--build-arg SEAFILE_MAJOR=6.1 -t $(NAME):old .
 
 run:
 	docker run -d --name seafile_http \

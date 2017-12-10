@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/stonemaster/docker-seafile-server.svg?branch=master)](https://travis-ci.org/stonemaster/docker-seafile-server)
 
-**Current Seafile server version: 6.0.4**
+**Current Seafile server version: 6.2.3**
 
 This docker image provides a fully-functional *Seafile*
 server installation that is configured with *SQLite* and
@@ -20,6 +20,19 @@ allows to create other users.
 by automatically running seafile provided upgrade scripts
  * Unittests are done using [bats](https://github.com/sstephenson/bats)
  * Automatic Docker builds and Travis builds which run unittests
+
+## Update from older version (6.0) and missing user accounts
+
+A bug in earlier container versions led to lost user accounts
+when the container is re-created (which is done during
+an update). Libraries still exist and can be used by
+re-creating the corresponding users. To prevent this
+to happen run the following command in your container
+before doing an upgrade from **6.0** containers:
+
+```bash
+docker exec <CONTAINER-ID> cp -r /seafile/ccnet /data/
+```
 
 ## Running container
 
