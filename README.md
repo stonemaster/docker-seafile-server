@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/stonemaster/docker-seafile-server.svg?branch=master)](https://travis-ci.org/stonemaster/docker-seafile-server)
 
-**Current Seafile server version: 6.0.4**
+**Current Seafile server version: 6.2.3**
 
 This docker image provides a fully-functional *Seafile*
 server installation that is configured with *SQLite* and
