@@ -143,6 +143,17 @@ This port **must** match the port that is exposed
 via Docker. It is used internally by Seafile to expose
 it to the client for file handling.
 
+### SEAFILE_EXTERNAL_PROTOCOL
+
+ * *default:* *automatic*
+ * Options: `http`, `https`
+
+Allows to override the protocol exposed by Seafile file server.
+If `USE_SSL` is to to `on` this is automatically determined
+to be **https**; otherwise it is **http**. However
+if a HTTPs proxy is used in front of the seafile container
+this may need to be adapted.
+
 ### SEAFILE_HOSTNAME
 
 This hostname *must* match the host the Seafile instance

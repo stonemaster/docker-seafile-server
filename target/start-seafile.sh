@@ -87,6 +87,11 @@ else
   protocol="https"
 fi
 
+# Protocol override
+if [[ "${SEAFILE_EXTERNAL_PROTOCOL:-}" != "" ]]; then
+    protocol="${SEAFILE_EXTERNAL_PROTOCOL}"
+fi
+
 # patch seafile and seahub configuration for nginx
 sed -i "s@SERVICE\_URL.*@SERVICE\_URL = $protocol\:\/\/${SEAFILE_HOSTNAME}\:${SEAFILE_EXTERNAL_PORT}@g" /seafile/conf/ccnet.conf
 echo "FILE_SERVER_ROOT = '$protocol://${SEAFILE_HOSTNAME}:${SEAFILE_EXTERNAL_PORT}/seafhttp'" >> /seafile/conf/seahub_settings.py
