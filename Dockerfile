@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.10
 
 MAINTAINER André Stein
 
@@ -11,16 +11,16 @@ VOLUME /data
 # make sure that SEAFILE_MAJOR matches SEAFILE_VERSION!
 # additional the seafile versions may be passed as --build-arg variables
 # thus overriding this default!
-ARG SEAFILE_VERSION=6.2.3
+ARG SEAFILE_VERSION=6.3.4
 ENV SEAFILE_VERSION ${SEAFILE_VERSION}
-ARG SEAFILE_MAJOR=6.2
+ARG SEAFILE_MAJOR=6.3
 ENV SEAFILE_MAJOR ${SEAFILE_MAJOR}
 
 # Install seafile dependencies and make sure to clean
 # all apt caches
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -q --fix-missing && \
 	apt-get -y install python wget nginx && \
-	apt-get -y install python2.7 libpython2.7 python-setuptools python-imaging python-ldap python-urllib3 sqlite3 && \
+	apt-get -y install python2.7 libpython2.7 python-setuptools python-pil python-ldap python-urllib3 sqlite3 && \
 	apt-get autoclean && rm -rf /var/lib/apt/lists/* && \
 	rm -rf /usr/share/locale/* && rm -rf /usr/share/man/* && rm -rf /usr/share/doc/*
 

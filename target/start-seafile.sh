@@ -96,6 +96,7 @@ fi
 sed -i "s@SERVICE\_URL.*@SERVICE\_URL = $protocol\:\/\/${SEAFILE_HOSTNAME}\:${SEAFILE_EXTERNAL_PORT}@g" /seafile/conf/ccnet.conf
 echo "FILE_SERVER_ROOT = '$protocol://${SEAFILE_HOSTNAME}:${SEAFILE_EXTERNAL_PORT}/seafhttp'" >> /seafile/conf/seahub_settings.py
 
+
 #
 # start the services
 #
@@ -103,10 +104,10 @@ echo "FILE_SERVER_ROOT = '$protocol://${SEAFILE_HOSTNAME}:${SEAFILE_EXTERNAL_POR
 cd /seafile/seafile-server-latest
 
 echo "Starting seafile.." && ./seafile.sh start
-echo "Starting seahub..." && ./seahub.sh start-fastcgi
+echo "Starting seahub..." && ./seahub.sh start
 
 service nginx start || (tail /var/log/nginx/error.log; exit 1;)
 
 # Output log files that also keeps container running
-tail -f /var/log/nginx/error.log /var/log/nginx/seahub.error.log /seafile/logs/*.log
+tail -f /var/log/nginx/error.log /var/log/nginx/seafhttp.error.log /var/log/nginx/seahub.error.log /seafile/logs/*.log
 
