@@ -96,6 +96,11 @@ fi
 sed -i "s@SERVICE\_URL.*@SERVICE\_URL = $protocol\:\/\/${SEAFILE_HOSTNAME}\:${SEAFILE_EXTERNAL_PORT}@g" /seafile/conf/ccnet.conf
 echo "FILE_SERVER_ROOT = '$protocol://${SEAFILE_HOSTNAME}:${SEAFILE_EXTERNAL_PORT}/seafhttp'" >> /seafile/conf/seahub_settings.py
 
+sed -i "s@enabled.*@enabled = true@g" /seafile/conf/seafdav.conf
+sed -i "s@port.*@port = 8080@g" /seafile/conf/seafdav.conf
+sed -i "s@fastcgi.*@fastcgi = false@g" /seafile/conf/seafdav.conf
+sed -i "s@share_name.*@share_name = /seafdav@g" /seafile/conf/seafdav.conf
+
 #
 # start the services
 #
@@ -103,10 +108,9 @@ echo "FILE_SERVER_ROOT = '$protocol://${SEAFILE_HOSTNAME}:${SEAFILE_EXTERNAL_POR
 cd /seafile/seafile-server-latest
 
 echo "Starting seafile.." && ./seafile.sh start
-echo "Starting seahub..." && ./seahub.sh start-fastcgi
+echo "Starting seahub..." && ./seahub.sh start
 
 service nginx start || (tail /var/log/nginx/error.log; exit 1;)
 
 # Output log files that also keeps container running
-tail -f /var/log/nginx/error.log /var/log/nginx/seahub.error.log /seafile/logs/*.log
-
+tail -f /var/log/nginx/error.log /var/log/nginx/seafhttp.error.log /var/log/nginx/seahub.error.log /var/log/nginx/seafdav.access.log /var/log/nginx/seafdav.error.log /seafile/logs/*.log
