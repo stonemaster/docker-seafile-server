@@ -1,3 +1,6 @@
+This project is going to be archived because of lack of time. There is an official Docker solution as of 2023!
+https://github.com/haiwen/seafile-docker
+
 # Docker Image for fully functional Seafile with SQLite
 
 [![Build Status](https://travis-ci.org/stonemaster/docker-seafile-server.svg?branch=master)](https://travis-ci.org/stonemaster/docker-seafile-server)
